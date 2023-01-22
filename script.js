@@ -12,5 +12,26 @@ flipBtn.addEventListener("click", () => {
     setTimeout(function () {
       coin.style.animation = "spin-heads 3s forwards";
     }, 100);
+    heads++;
+
+  } else {
+    setTimeout(function () {
+      coin.style.animation = "spin-tails 3s forwards";
+    }, 100);
+    tails++;
   }
-})
+  setTimeout(updateStats, 3000);
+  disableButton();
+});
+
+function updateStats() {
+  document.querySelector("#heads-count").textContent = `Heads: ${heads}`;
+  document.querySelector("#tails-count").textContent = `Tails: ${tails}`;
+};
+
+function disableButton() {
+  flipBtn.disable = true;
+  setTimeout(function () {
+    flipBtn.disabled = false;
+  }, 3000);
+}
